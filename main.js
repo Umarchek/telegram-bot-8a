@@ -16,16 +16,51 @@ bot.on('message', async message => {
             keyboard: [
                 [
                     {
-                        text: `Расписание уроков`
-                    },
-                    {
-                        text: `Расписание звонков`
+                        text: `8 "А" класс`
                     }
                 ]
             ]
         }
-
         bot.sendMessage(chatId, `Здравствуйте <b>${name}</b>. Что вы хотите узнать?`, {
+            parse_mode: 'HTML',
+            reply_markup: keyboard
+        })
+    } else if (text == '8 "А" класс') {
+        const keyboard = {
+            resize_keyboard: true,
+            one_time_keyboard: true,
+            keyboard: [
+                [
+                    {
+                        text: `Расписание уроков`
+                    },
+                    {
+                        text: `Расписание звонков`
+                    },
+                    {
+                        text: `На старт`
+                    }
+                ]
+            ]
+        }
+        bot.sendMessage(chatId, `Здесь вы можете найти расписание уроков и звонков! Выберите ниже 👇`, {
+            parse_mode: 'HTML',
+            reply_markup: keyboard
+        })
+    }
+    else if (text == `На старт`) {
+        const keyboard = {
+            resize_keyboard: true,
+            one_time_keyboard: true,
+            keyboard: [
+                [
+                    {
+                        text: `8 "А" класс`
+                    }
+                ]
+            ]
+        }
+        bot.sendMessage(chatId, `<b>${name}</b>. Что вы хотите узнать?`, {
             parse_mode: 'HTML',
             reply_markup: keyboard
         })
@@ -103,6 +138,9 @@ bot.on('message', async message => {
                     },
                     {
                         text: `Расписание звонков`
+                    },
+                    {
+                        text: `На старт`
                     }
                 ]
             ]
