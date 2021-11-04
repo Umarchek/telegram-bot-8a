@@ -167,6 +167,60 @@ bot.on('message', async message => {
         bot.sendMessage(chatId, `Начало: 11:30 \nКонец: 12:15`)
     } else if (text == '6-ой урок') {
         bot.sendMessage(chatId, `Начало: 12:20 \nКонец: 13:05`)
+    } else if (text == 'Расписание звонков пятница') {
+        const dayskeyboard = {
+            resize_keyboard: true,
+            one_time_keyboard: true,
+            keyboard: [
+                [
+                    {
+                        text: `1-ый урок пятница`
+                    },
+                    {
+                        text: `2-ой урок пятница`
+                    },
+                    {
+                        text: `3-ий урок пятница`
+                    },
+                ],
+                [
+                    {
+                        text: `4-ый урок пятница`
+                    },
+                    {
+                        text: `5-ый урок пятница`
+                    },
+                    {
+                        text: `6-ой урок пятница`
+                    },
+                    {
+                        text: `7-ой урок пятница`
+                    },
+                ],
+                [
+                    {
+                        text: `Главное`
+                    }
+                ]
+            ]
+        }
+        bot.sendMessage(chatId, `Выберите урок (пятница)`, {
+            parse_mode: 'HTML',
+            reply_markup: dayskeyboard
+        })
+    } else if (text == '1-ый урок пятница') {
+        bot.sendMessage(chatId, `Начало: 08:00 \nКонец: 08:30`)
+    } else if (text == '2-ой урок пятница') {
+        bot.sendMessage(chatId, `Начало: 08:35 \nКонец: 09:15`)
+    } else if (text == '3-ий урок пятница') {
+        bot.sendMessage(chatId, `Начало: 09:20 \nКонец: 10:00`)
+    } else if (text == '4-ый урок пятница') {
+        bot.sendMessage(chatId, `Начало: 10:05 \nКонец: 10:45`)
+    } else if (text == '5-ый урок пятница') {
+        bot.sendMessage(chatId, `Начало: 10:55 \nКонец: 11:35`)
+    } else if (text == '6-ой урок пятница') {
+        bot.sendMessage(chatId, `Начало: 11:40 \nКонец: 12:20`)
+    } else if (text == '7-ой урок пятница') {
+        bot.sendMessage(chatId, `Начало: 12:25 \nКонец: 13:05`)
     }
-
 })
