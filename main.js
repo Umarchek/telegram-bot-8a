@@ -112,6 +112,61 @@ bot.on('message', async message => {
             parse_mode: 'HTML',
             reply_markup: keyboard
         })
+    } else if (text == 'Расписание звонков') {
+        const dayskeyboard = {
+            resize_keyboard: true,
+            one_time_keyboard: true,
+            keyboard: [
+                [
+                    {
+                        text: `1-ый урок`
+                    },
+                    {
+                        text: `2-ой урок`
+                    },
+                    {
+                        text: `3-ий урок`
+                    },
+                ],
+                [
+                    {
+                        text: `4-ый урок`
+                    },
+                    {
+                        text: `5-ый урок`
+                    },
+                    {
+                        text: `6-ой урок`
+                    },
+                ],
+                [
+                    {
+                        text: `Расписание звонков пятница`
+                    },
+                ],
+                [
+                    {
+                        text: `Главное`
+                    }
+                ]
+            ]
+        }
+        bot.sendMessage(chatId, `Выберите урок`, {
+            parse_mode: 'HTML',
+            reply_markup: dayskeyboard
+        })
+    } else if (text == '1-ый урок') {
+        bot.sendMessage(chatId, `Начало: 08:00 \nКонец: 08:45`)
+    } else if (text == '2-ой урок') {
+        bot.sendMessage(chatId, `Начало: 08:50 \nКонец: 09:35`)
+    } else if (text == '3-ий урок') {
+        bot.sendMessage(chatId, `Начало: 09:40 \nКонец: 10:25`)
+    } else if (text == '4-ый урок') {
+        bot.sendMessage(chatId, `Начало: 10:35 \nКонец: 11:20`)
+    } else if (text == '5-ый урок') {
+        bot.sendMessage(chatId, `Начало: 11:30 \nКонец: 12:15`)
+    } else if (text == '6-ой урок') {
+        bot.sendMessage(chatId, `Начало: 12:20 \nКонец: 13:05`)
     }
 
 })
