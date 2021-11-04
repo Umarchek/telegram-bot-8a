@@ -155,62 +155,6 @@ bot.on('message', async message => {
             parse_mode: 'HTML',
             reply_markup: dayskeyboard
         })
-    } else if (text == 'Расписание звонков пятница') {
-        bot.sendMessage(chatId, `Выберите урок (пятница)`, {
-            parse_mode: 'HTML',
-            reply_markup: {
-                inline_keyboard: [
-                    [
-                        {
-                            text: 'Понедельник',
-                            callback_data: "Понедельник"
-                        }
-                    ],
-                    [
-                        {
-                            text: 'Вторник',
-                            callback_data: "Вторник"
-                        }
-                    ],
-                    [
-                        {
-                            text: 'Среда',
-                            callback_data: "Среда"
-                        }
-                    ],
-                    [
-                        {
-                            text: 'Четверг',
-                            callback_data: "Четверг"
-                        }
-                    ],
-                    [
-                        {
-                            text: 'Пятница',
-                            callback_data: "Пятница"
-                        }
-                    ],
-                    [
-                        {
-                            text: 'Суббота',
-                            callback_data: "Суббота"
-                        }
-                    ],
-                    [
-                        {
-                            text: `Главное`,
-                            callback_data: "Главное"
-                        }
-                    ],
-                ]
-            }
-        })
-    } else if (text == '5-ый урок пятница') {
-
-    } else if (text == '6-ой урок пятница') {
-
-    } else if (text == '7-ой урок пятница') {
-
     }
 })
 bot.on('callback_query', async query => {
@@ -268,56 +212,52 @@ bot.on('callback_query', async query => {
             })
             break
         case 'Расписание звонков':
+        case 'Расписание звонков пятница':
             bot.deleteMessage(chat.id, message_id)
-            bot.sendMessage(chat.id, `Выберите урок`, {
+            bot.sendMessage(chat.id, `Выберите звонков (пятница)`, {
+                parse_mode: 'HTML',
                 reply_markup: {
                     inline_keyboard: [
                         [
                             {
-                                text: '1-ый урок',
-                                callback_data: "1-ый урок"
+                                text: '1-ый урок пятница',
+                                callback_data: "1-ый урок пятница"
                             }
                         ],
                         [
                             {
-                                text: '2-ый урок',
-                                callback_data: "2-ый урок"
+                                text: '2-ой урок пятница',
+                                callback_data: "2-ой урок пятница"
                             }
                         ],
                         [
                             {
-                                text: `3-ий урок`,
-                                callback_data: "3-ий урок"
+                                text: '3-ий урок пятница',
+                                callback_data: "3-ий урок пятница"
                             }
                         ],
                         [
                             {
-                                text: `4-ый урок`,
-                                callback_data: "4-ый урок"
+                                text: '4-ый урок пятница',
+                                callback_data: "4-ый урок пятница"
                             }
                         ],
                         [
                             {
-                                text: `5-ый урок`,
-                                callback_data: "5-ый урок"
+                                text: '5-ый урок пятница',
+                                callback_data: "5-ый урок пятница"
                             }
                         ],
                         [
                             {
-                                text: `6-ой урок`,
-                                callback_data: "6-ой урок"
+                                text: '6-ой урок пятница',
+                                callback_data: "6-ой урок пятница"
                             }
                         ],
                         [
                             {
-                                text: `Расписание звонков пятница`,
-                                callback_data: "Расписание звонков пятница"
-                            }
-                        ],
-                        [
-                            {
-                                text: `Главное`,
-                                callback_data: "Главное"
+                                text: `7-ой урок пятница`,
+                                callback_data: "7-ой урок пятница"
                             }
                         ],
                     ]
@@ -485,49 +425,49 @@ bot.on('callback_query', async query => {
             break
         case '1-ый урок пятница':
             await bot.sendPhoto(
-                message.chat.id,
+                chat.id,
                 'images/1-s.jpg', {
                 caption: `1-ый урок\n\nНачало: 08:00 \nКонец: 08:30`
             })
             break
         case '2-ой урок пятница':
             await bot.sendPhoto(
-                message.chat.id,
+                chat.id,
                 'images/2-s.jpg', {
                 caption: `2-ый урок\n\nНачало: 08:35 \nКонец: 09:15`
             })
             break
         case "3-ий урок пятница":
             await bot.sendPhoto(
-                message.chat.id,
+                chat.id,
                 'images/3-s.jpg', {
                 caption: `3-ий урок\n\nНачало: 09:20 \nКонец: 10:00`
             })
             break
         case "4-ый урок пятница":
             await bot.sendPhoto(
-                message.chat.id,
+                chat.id,
                 'images/4-s.jpg', {
                 caption: `4-ый урок пятница\n\nНачало: 10:05 \nКонец: 10:45`
             })
             break
         case "5-ый урок пятница":
             await bot.sendPhoto(
-                message.chat.id,
+                chat.id,
                 'images/5-s.jpg', {
                 caption: `5-ый урок пятница\n\nНачало: 10:55 \nКонец: 11:35`
             })
             break
         case "6-ой урок пятница":
             await bot.sendPhoto(
-                message.chat.id,
+                chat.id,
                 'images/6-s.jpg', {
                 caption: `6-ой урок пятница\n\nНачало: 11:40 \nКонец: 12:20`
             })
             break
-        case "6-ой урок пятница":
+        case "7-ой урок пятница":
             await bot.sendPhoto(
-                message.chat.id,
+                chat.id,
                 'images/7-s.jpg', {
                 caption: `7-ой урок пятница\n\nНачало: 12:25 \nКонец: 13:05`
             })
