@@ -48,10 +48,30 @@ bot.on('message', async message => {
         }
         bot.sendMessage(chatId, `Здесь вы можете найти расписание уроков и звонков! Выберите ниже 👇`, {
             parse_mode: 'HTML',
-            reply_markup: keyboard
+            reply_markup: {
+                inline_keyboard: [
+                    [
+                        {
+                            text: 'Расписание уроков',
+                            callback_data: "Расписание уроков"
+                        }
+                    ],
+                    [
+                        {
+                            text: 'Расписание звонков',
+                            callback_data: "Расписание звонков"
+                        }
+                    ],
+                    [
+                        {
+                            text: 'На старт',
+                            callback_data: "На старт"
+                        }
+                    ]
+                ]
+            }
         })
-    }
-    else if (text == `На старт`) {
+    } else if (text == `На старт`) {
         const keyboard = {
             resize_keyboard: true,
             one_time_keyboard: true,
@@ -66,82 +86,6 @@ bot.on('message', async message => {
         bot.sendMessage(chatId, `<b>${name}</b>. Что вы хотите узнать?`, {
             parse_mode: 'HTML',
             reply_markup: keyboard
-        })
-    } else if (text == 'Расписание уроков') {
-        const dayskeyboard = {
-            resize_keyboard: true,
-            one_time_keyboard: true,
-            keyboard: [
-                [
-                    {
-                        text: `Понедельник`
-                    },
-                    {
-                        text: `Вторник`
-                    },
-                    {
-                        text: `Среда`
-                    },
-                ],
-                [
-                    {
-                        text: `Четверг`
-                    },
-                    {
-                        text: `Пятница`
-                    },
-                    {
-                        text: `Суббота`
-                    },
-                ],
-                [
-                    {
-                        text: `Главное`
-                    }
-                ]
-            ]
-        }
-        bot.sendMessage(chatId, `Выберите день недели`, {
-            parse_mode: 'HTML',
-            reply_markup: dayskeyboard
-        })
-
-    } else if (text == `Понедельник`) {
-        await bot.sendPhoto(
-            message.chat.id,
-            'images/Monday.jpg', {
-            caption: `Понедельник: \n\n1. Англ.яз \n2. История \n3. Биология \n4. Алгебра \n5. География \n6. Русский.яз`
-        }
-        );
-    } else if (text == `Вторник`) {
-        await bot.sendPhoto(
-            message.chat.id,
-            'images/Tuesday.jpg', {
-            caption: `Вторник: \n\n1. Химия \n2. История \n3. Гос.право \n4. Геометрия \n5. Литература \n6. Физкультура`
-        })
-    } else if (text == `Среда`) {
-        await bot.sendPhoto(
-            message.chat.id,
-            'images/Wednesday.jpg', {
-            caption: `Среда: \n\n1. Англ.яз \n2. Алгебра \n3. Техналогия \n4. Узбекский.яз \n5. География \n6. Русский.яз`
-        })
-    } else if (text == `Четверг`) {
-        await bot.sendPhoto(
-            message.chat.id,
-            'images/Thursday.jpg', {
-            caption: `Четверг: \n\n1. Физкультура \n2. История \n3. Биология \n4. Узбекский.яз \n5. Информатика \n6. Русский.яз`
-        })
-    } else if (text == `Пятница`) {
-        await bot.sendPhoto(
-            message.chat.id,
-            'images/Friday.jpg', {
-            caption: `Пятница: \n\n1. Час.дух. \n2. Черчение \n3. Воспитание \n4. Алгебра \n5. Физика \n6. Химия \n7. Англ.яз`
-        })
-    } else if (text == `Суббота`) {
-        await bot.sendPhoto(
-            message.chat.id,
-            'images/Saturday.jpg', {
-            caption: `Суббота: \n\n1. Эканомика \n2. Физкультура \n3. Узбекский.яз \n4. Алгебра`
         })
     } else if (text == `Главное`) {
         const keyboard = {
@@ -290,13 +234,13 @@ bot.on('message', async message => {
     } else if (text == '1-ый урок пятница') {
         await bot.sendPhoto(
             message.chat.id,
-            'images/1.jpg', {
+            'images/1-s.jpg', {
             caption: `1-ый урок\n\nНачало: 08:00 \nКонец: 08:30`
         })
     } else if (text == '2-ой урок пятница') {
         await bot.sendPhoto(
             message.chat.id,
-            'images/2.jpg', {
+            'images/2-s.jpg', {
             caption: `2-ый урок\n\nНачало: 08:35 \nКонец: 09:15`
         })
     } else if (text == '3-ий урок пятница') {
@@ -329,5 +273,110 @@ bot.on('message', async message => {
             'images/7-s.jpg', {
             caption: `7-ой урок пятница\n\nНачало: 12:25 \nКонец: 13:05`
         })
+    }
+})
+bot.on('callback_query', async query => {
+    const { chat, message_id, text } = query.message
+    switch (query.data) {
+        case 'Расписание уроков':
+            bot.deleteMessage(chat.id, message_id)
+            const dayskeyboard = {
+                resize_keyboard: true,
+                one_time_keyboard: true,
+                keyboard: [
+                    [
+                        {
+                            text: `Понедельник`
+                        },
+                        {
+                            text: `Вторник`
+                        },
+                        {
+                            text: `Среда`
+                        },
+                    ],
+                    [
+                        {
+                            text: `Четверг`
+                        },
+                        {
+                            text: `Пятница`
+                        },
+                        {
+                            text: `Суббота`
+                        },
+                    ],
+                    [
+                        {
+                            text: `Главное`
+                        }
+                    ]
+                ]
+            }
+            bot.sendMessage(chat.id, `Выберите день недели`, {
+                parse_mode: 'HTML',
+                reply_markup: {
+                    inline_keyboard: [
+                        [
+                            {
+                                text: 'Понедельник',
+                                callback_data: "Расписание уроков"
+                            }
+                        ],
+                        [
+                            {
+                                text: 'Расписание звонков',
+                                callback_data: "Расписание звонков"
+                            }
+                        ],
+                        [
+                            {
+                                text: 'На старт',
+                                callback_data: "На старт"
+                            }
+                        ]
+                    ]
+                }
+            })
+
+            if (text == `Понедельник`) {
+                await bot.sendPhoto(
+                    message.chat.id,
+                    'images/Monday.jpg', {
+                    caption: `Понедельник: \n\n1. Англ.яз \n2. История \n3. Биология \n4. Алгебра \n5. География \n6. Русский.яз`
+                }
+                );
+            } else if (text == `Вторник`) {
+                await bot.sendPhoto(
+                    message.chat.id,
+                    'images/Tuesday.jpg', {
+                    caption: `Вторник: \n\n1. Химия \n2. История \n3. Гос.право \n4. Геометрия \n5. Литература \n6. Физкультура`
+                })
+            } else if (text == `Среда`) {
+                await bot.sendPhoto(
+                    message.chat.id,
+                    'images/Wednesday.jpg', {
+                    caption: `Среда: \n\n1. Англ.яз \n2. Алгебра \n3. Техналогия \n4. Узбекский.яз \n5. География \n6. Русский.яз`
+                })
+            } else if (text == `Четверг`) {
+                await bot.sendPhoto(
+                    message.chat.id,
+                    'images/Thursday.jpg', {
+                    caption: `Четверг: \n\n1. Физкультура \n2. История \n3. Биология \n4. Узбекский.яз \n5. Информатика \n6. Русский.яз`
+                })
+            } else if (text == `Пятница`) {
+                await bot.sendPhoto(
+                    message.chat.id,
+                    'images/Friday.jpg', {
+                    caption: `Пятница: \n\n1. Час.дух. \n2. Черчение \n3. Воспитание \n4. Алгебра \n5. Физика \n6. Химия \n7. Англ.яз`
+                })
+            } else if (text == `Суббота`) {
+                await bot.sendPhoto(
+                    message.chat.id,
+                    'images/Saturday.jpg', {
+                    caption: `Суббота: \n\n1. Эканомика \n2. Физкультура \n3. Узбекский.яз \n4. Алгебра`
+                })
+            }
+
     }
 })
