@@ -108,46 +108,119 @@ bot.on('message', async message => {
 
         bot.sendMessage(chatId, `Вы вышли на главное меню. Что вы хотите узнать?`, {
             parse_mode: 'HTML',
-            reply_markup: keyboard
+            reply_markup: {
+                inline_keyboard: [
+                    [
+                        {
+                            text: 'Расписание уроков',
+                            callback_data: "Расписание уроков"
+                        }
+                    ],
+                    [
+                        {
+                            text: 'Расписание звонков',
+                            callback_data: "Расписание звонков"
+                        }
+                    ],
+                    [
+                        {
+                            text: 'На старт',
+                            callback_data: "На старт"
+                        }
+                    ]
+                ]
+            }
         })
     } else if (text == 'Расписание звонков') {
         const dayskeyboard = {
             resize_keyboard: true,
             one_time_keyboard: true,
-            keyboard: [
-                [
-                    {
-                        text: `1-ый урок`
-                    },
-                    {
-                        text: `2-ой урок`
-                    },
-                    {
-                        text: `3-ий урок`
-                    },
-                ],
-                [
-                    {
-                        text: `4-ый урок`
-                    },
-                    {
-                        text: `5-ый урок`
-                    },
-                    {
-                        text: `6-ой урок`
-                    },
-                ],
-                [
-                    {
-                        text: `Расписание звонков пятница`
-                    },
-                ],
-                [
-                    {
-                        text: `Главное`
-                    }
+            // keyboard: [
+            //     [
+            //         {
+            //             text: `1-ый урок`
+            //         },
+            //         {
+            //             text: `2-ой урок`
+            //         },
+            //         {
+            //             text: `3-ий урок`
+            //         },
+            //     ],
+            //     [
+            //         {
+            //             text: `4-ый урок`
+            //         },
+            //         {
+            //             text: `5-ый урок`
+            //         },
+            //         {
+            //             text: `6-ой урок`
+            //         },
+            //     ],
+            //     [
+            //         {
+            //             text: `Расписание звонков пятница`
+            //         },
+            //     ],
+            //     [
+            //         {
+            //             text: `Главное`
+            //         }
+            //     ]
+            // ]
+            reply_markup: {
+                inline_keyboard: [
+                    [
+                        {
+                            text: '1-ый урок',
+                            callback_data: "1-ый урок"
+                        }
+                    ],
+                    [
+                        {
+                            text: '2-ый урок',
+                            callback_data: "2-ый урок"
+                        }
+                    ],
+                    [
+                        {
+                            text: `3-ий урок`,
+                            callback_data: "3-ий урок"
+                        }
+                    ],
+                    [
+                        {
+                            text: `4-ый урок`,
+                            callback_data: "4-ый урок"
+                        }
+                    ],
+                    [
+                        {
+                            text: `5-ый урок`,
+                            callback_data: "5-ый урок"
+                        }
+                    ],
+                    [
+                        {
+                            text: `6-ой урок`,
+                            callback_data: "6-ой урок"
+                        }
+                    ],
+                    [
+                        {
+                            text: `Расписание звонков пятница`,
+                            callback_data: "Расписание звонков пятница"
+                        }
+                    ],
+                    [
+                        {
+                            text: `Главное`,
+                            callback_data: "Главное"
+                        }
+                    ],
                 ]
-            ]
+            }
         }
         bot.sendMessage(chatId, `Выберите урок`, {
             parse_mode: 'HTML',
@@ -191,45 +264,48 @@ bot.on('message', async message => {
             caption: `6-ой урок\n\nНачало: 12:20 \nКонец: 13:05`
         })
     } else if (text == 'Расписание звонков пятница') {
-        const dayskeyboard = {
-            resize_keyboard: true,
-            one_time_keyboard: true,
-            keyboard: [
-                [
-                    {
-                        text: `1-ый урок пятница`
-                    },
-                    {
-                        text: `2-ой урок пятница`
-                    },
-                    {
-                        text: `3-ий урок пятница`
-                    },
-                ],
-                [
-                    {
-                        text: `4-ый урок пятница`
-                    },
-                    {
-                        text: `5-ый урок пятница`
-                    },
-                    {
-                        text: `6-ой урок пятница`
-                    },
-                    {
-                        text: `7-ой урок пятница`
-                    },
-                ],
-                [
-                    {
-                        text: `Главное`
-                    }
-                ]
-            ]
-        }
         bot.sendMessage(chatId, `Выберите урок (пятница)`, {
             parse_mode: 'HTML',
-            reply_markup: dayskeyboard
+            reply_markup: {
+                inline_keyboard: [
+                    [
+                        {
+                            text: 'Понедельник',
+                            callback_data: "Понедельник"
+                        }
+                    ],
+                    [
+                        {
+                            text: 'Вторник',
+                            callback_data: "Вторник"
+                        }
+                    ],
+                    [
+                        {
+                            text: 'Среда',
+                            callback_data: "Среда"
+                        }
+                    ],
+                    [
+                        {
+                            text: 'Четверг',
+                            callback_data: "Четверг"
+                        }
+                    ],
+                    [
+                        {
+                            text: 'Пятница',
+                            callback_data: "Пятница"
+                        }
+                    ],
+                    [
+                        {
+                            text: 'Суббота',
+                            callback_data: "Суббота"
+                        }
+                    ],
+                ]
+            }
         })
     } else if (text == '1-ый урок пятница') {
         await bot.sendPhoto(
@@ -280,39 +356,6 @@ bot.on('callback_query', async query => {
     switch (query.data) {
         case 'Расписание уроков':
             bot.deleteMessage(chat.id, message_id)
-            const dayskeyboard = {
-                resize_keyboard: true,
-                one_time_keyboard: true,
-                keyboard: [
-                    [
-                        {
-                            text: `Понедельник`
-                        },
-                        {
-                            text: `Вторник`
-                        },
-                        {
-                            text: `Среда`
-                        },
-                    ],
-                    [
-                        {
-                            text: `Четверг`
-                        },
-                        {
-                            text: `Пятница`
-                        },
-                        {
-                            text: `Суббота`
-                        },
-                    ],
-                    [
-                        {
-                            text: `Главное`
-                        }
-                    ]
-                ]
-            }
             bot.sendMessage(chat.id, `Выберите день недели`, {
                 parse_mode: 'HTML',
                 reply_markup: {
@@ -320,21 +363,39 @@ bot.on('callback_query', async query => {
                         [
                             {
                                 text: 'Понедельник',
-                                callback_data: "Расписание уроков"
+                                callback_data: "Понедельник"
                             }
                         ],
                         [
                             {
-                                text: 'Расписание звонков',
-                                callback_data: "Расписание звонков"
+                                text: 'Вторник',
+                                callback_data: "Вторник"
                             }
                         ],
                         [
                             {
-                                text: 'На старт',
-                                callback_data: "На старт"
+                                text: 'Среда',
+                                callback_data: "Среда"
                             }
-                        ]
+                        ],
+                        [
+                            {
+                                text: 'Четверг',
+                                callback_data: "Четверг"
+                            }
+                        ],
+                        [
+                            {
+                                text: 'Пятница',
+                                callback_data: "Пятница"
+                            }
+                        ],
+                        [
+                            {
+                                text: 'Суббота',
+                                callback_data: "Суббота"
+                            }
+                        ],
                     ]
                 }
             })
@@ -377,6 +438,91 @@ bot.on('callback_query', async query => {
                     caption: `Суббота: \n\n1. Эканомика \n2. Физкультура \n3. Узбекский.яз \n4. Алгебра`
                 })
             }
-
+            break
+        case 'Расписание звонков':
+            bot.deleteMessage(chat.id, message_id)
+            bot.sendMessage(chat.id, `Выберите урок`, {
+                reply_markup: {
+                    inline_keyboard: [
+                        [
+                            {
+                                text: '1-ый урок',
+                                callback_data: "1-ый урок"
+                            }
+                        ],
+                        [
+                            {
+                                text: '2-ый урок',
+                                callback_data: "2-ый урок"
+                            }
+                        ],
+                        [
+                            {
+                                text: `3-ий урок`,
+                                callback_data: "3-ий урок"
+                            }
+                        ],
+                        [
+                            {
+                                text: `4-ый урок`,
+                                callback_data: "4-ый урок"
+                            }
+                        ],
+                        [
+                            {
+                                text: `5-ый урок`,
+                                callback_data: "5-ый урок"
+                            }
+                        ],
+                        [
+                            {
+                                text: `6-ой урок`,
+                                callback_data: "6-ой урок"
+                            }
+                        ],
+                        [
+                            {
+                                text: `Расписание звонков пятница`,
+                                callback_data: "Расписание звонков пятница"
+                            }
+                        ],
+                        [
+                            {
+                                text: `Главное`,
+                                callback_data: "Главное"
+                            }
+                        ],
+                    ]
+                }
+            })
+            break
+        case 'Главное':
+            bot.deleteMessage(chat.id, message_id)
+            bot.sendMessage(chat.id, `Вы вышли на главное меню. Что вы хотите узнать?`, {
+                parse_mode: 'HTML',
+                reply_markup: {
+                    inline_keyboard: [
+                        [
+                            {
+                                text: 'Расписание уроков',
+                                callback_data: "Расписание уроков"
+                            }
+                        ],
+                        [
+                            {
+                                text: 'Расписание звонков',
+                                callback_data: "Расписание звонков"
+                            }
+                        ],
+                        [
+                            {
+                                text: 'На старт',
+                                callback_data: "На старт"
+                            }
+                        ]
+                    ]
+                }
+            })
+            break
     }
 })
