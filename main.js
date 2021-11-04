@@ -234,6 +234,12 @@ bot.on('message', async message => {
                             callback_data: "Суббота"
                         }
                     ],
+                    [
+                        {
+                            text: `Главное`,
+                            callback_data: "Главное"
+                        }
+                    ],
                 ]
             }
         })
@@ -324,6 +330,12 @@ bot.on('callback_query', async query => {
                             {
                                 text: 'Суббота',
                                 callback_data: "Суббота"
+                            }
+                        ],
+                        [
+                            {
+                                text: `Главное`,
+                                callback_data: "Главное"
                             }
                         ],
                     ]
