@@ -2,9 +2,12 @@ const TelegramBot = require("node-telegram-bot-api")
 
 const TOKEN = `2094815044:AAFoVVcRjdsqukbocxJCwTcEU0FADbLqXyA`
 const bot = new TelegramBot(TOKEN, {
-    polling: true
-})
-
+    polling: true,
+    updates: {
+        enabled: true,
+        get_interval: 1000
+    }
+});
 bot.on('message', async message => {
     const chatId = message.chat.id
     const name = message.from.first_name
@@ -104,28 +107,41 @@ bot.on('message', async message => {
         })
 
     } else if (text == `Понедельник`) {
-        bot.sendMessage(chatId, `Понедельник: \n\n1. Англ.яз \n2. История \n3. Биология \n4. Алгебра \n5. География \n6. Русский.яз`, {
-            parse_mode: 'HTML'
-        })
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/Monday.jpg', {
+            caption: `Понедельник: \n\n1. Англ.яз \n2. История \n3. Биология \n4. Алгебра \n5. География \n6. Русский.яз`
+        }
+        );
     } else if (text == `Вторник`) {
-        bot.sendMessage(chatId, `Вторник: \n\n1. Химия \n2. История \n3. Гос.право \n4. Геометрия \n5. Литература \n6. Физкультура`, {
-            parse_mode: 'HTML'
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/Tuesday.jpg', {
+            caption: `Вторник: \n\n1. Химия \n2. История \n3. Гос.право \n4. Геометрия \n5. Литература \n6. Физкультура`
         })
     } else if (text == `Среда`) {
-        bot.sendMessage(chatId, `Среда: \n\n1. Англ.яз \n2. Алгебра \n3. Техналогия \n4. Узбекский.яз \n5. География \n6. Русский.яз`, {
-            parse_mode: 'HTML'
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/Wednesday.jpg', {
+            caption: `Среда: \n\n1. Англ.яз \n2. Алгебра \n3. Техналогия \n4. Узбекский.яз \n5. География \n6. Русский.яз`
         })
     } else if (text == `Четверг`) {
-        bot.sendMessage(chatId, `Четверг: \n\n1. Физкультура \n2. История \n3. Биология \n4. Узбекский.яз \n5. Информатика \n6. Русский.яз`, {
-            parse_mode: 'HTML'
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/Thursday.jpg', {
+            caption: `Четверг: \n\n1. Физкультура \n2. История \n3. Биология \n4. Узбекский.яз \n5. Информатика \n6. Русский.яз`
         })
     } else if (text == `Пятница`) {
-        bot.sendMessage(chatId, `Пятница: \n\n1. Час.дух. \n2. Черчение \n3. Воспитание \n4. Алгебра \n5. Физика \n6. Химия \n7. Англ.яз`, {
-            parse_mode: 'HTML'
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/Friday.jpg', {
+            caption: `Пятница: \n\n1. Час.дух. \n2. Черчение \n3. Воспитание \n4. Алгебра \n5. Физика \n6. Химия \n7. Англ.яз`
         })
     } else if (text == `Суббота`) {
-        bot.sendMessage(chatId, `Суббота: \n\n1. Эканомика \n2. Физкультура \n3. Узбекский.яз \n4. Алгебра`, {
-            parse_mode: 'HTML'
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/Saturday.jpg', {
+            caption: `Суббота: \n\n1. Эканомика \n2. Физкультура \n3. Узбекский.яз \n4. Алгебра`
         })
     } else if (text == `Главное`) {
         const keyboard = {
@@ -194,17 +210,42 @@ bot.on('message', async message => {
             reply_markup: dayskeyboard
         })
     } else if (text == '1-ый урок') {
-        bot.sendMessage(chatId, `Начало: 08:00 \nКонец: 08:45`)
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/1.jpg', {
+            caption: `1-ый урок\n\nНачало: 08:00 \nКонец: 08:45`
+        })
     } else if (text == '2-ой урок') {
-        bot.sendMessage(chatId, `Начало: 08:50 \nКонец: 09:35`)
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/2.jpg', {
+            caption: `2-ый урок\n\nНачало: 08:50 \nКонец: 09:35`
+        })
     } else if (text == '3-ий урок') {
-        bot.sendMessage(chatId, `Начало: 09:40 \nКонец: 10:25`)
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/3.jpg', {
+            caption: `3-ий урок\n\nНачало: 09:40 \nКонец: 10:25`
+        })
+
     } else if (text == '4-ый урок') {
-        bot.sendMessage(chatId, `Начало: 10:35 \nКонец: 11:20`)
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/4.jpg', {
+            caption: `4-ый урок\n\nНачало: 10:35 \nКонец: 11:20`
+        })
     } else if (text == '5-ый урок') {
-        bot.sendMessage(chatId, `Начало: 11:30 \nКонец: 12:15`)
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/5.jpg', {
+            caption: `5-ый урок\n\nНачало: 11:30 \nКонец: 12:15`
+        })
     } else if (text == '6-ой урок') {
-        bot.sendMessage(chatId, `Начало: 12:20 \nКонец: 13:05`)
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/6.jpg', {
+            caption: `6-ой урок\n\nНачало: 12:20 \nКонец: 13:05`
+        })
     } else if (text == 'Расписание звонков пятница') {
         const dayskeyboard = {
             resize_keyboard: true,
@@ -247,18 +288,46 @@ bot.on('message', async message => {
             reply_markup: dayskeyboard
         })
     } else if (text == '1-ый урок пятница') {
-        bot.sendMessage(chatId, `Начало: 08:00 \nКонец: 08:30`)
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/1.jpg', {
+            caption: `1-ый урок\n\nНачало: 08:00 \nКонец: 08:30`
+        })
     } else if (text == '2-ой урок пятница') {
-        bot.sendMessage(chatId, `Начало: 08:35 \nКонец: 09:15`)
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/2.jpg', {
+            caption: `2-ый урок\n\nНачало: 08:35 \nКонец: 09:15`
+        })
     } else if (text == '3-ий урок пятница') {
-        bot.sendMessage(chatId, `Начало: 09:20 \nКонец: 10:00`)
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/3-s.jpg', {
+            caption: `3-ий урок\n\nНачало: 09:20 \nКонец: 10:00`
+        })
     } else if (text == '4-ый урок пятница') {
-        bot.sendMessage(chatId, `Начало: 10:05 \nКонец: 10:45`)
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/4-s.jpg', {
+            caption: `4-ый урок пятница\n\nНачало: 10:05 \nКонец: 10:45`
+        })
     } else if (text == '5-ый урок пятница') {
-        bot.sendMessage(chatId, `Начало: 10:55 \nКонец: 11:35`)
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/5-s.jpg', {
+            caption: `5-ый урок пятница\n\nНачало: 10:55 \nКонец: 11:35`
+        })
     } else if (text == '6-ой урок пятница') {
-        bot.sendMessage(chatId, `Начало: 11:40 \nКонец: 12:20`)
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/6-s.jpg', {
+            caption: `6-ой урок пятница\n\nНачало: 11:40 \nКонец: 12:20`
+        })
     } else if (text == '7-ой урок пятница') {
-        bot.sendMessage(chatId, `Начало: 12:25 \nКонец: 13:05`)
+        await bot.sendPhoto(
+            message.chat.id,
+            'images/7-s.jpg', {
+            caption: `7-ой урок пятница\n\nНачало: 12:25 \nКонец: 13:05`
+        })
     }
 })
