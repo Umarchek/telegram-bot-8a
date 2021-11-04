@@ -1,0 +1,23 @@
+{
+  "name": "telegram-bot-8a",
+  "version": "1.0.0",
+  "description": "Этот бот был сделан github.com/uzbase",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UZBase/telegram-bot-8a.git"
+  },
+  "author": "Umarjon Sharofiddinov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UZBase/telegram-bot-8a/issues"
+  },
+  "homepage": "https://github.com/UZBase/telegram-bot-8a#readme",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.54.0",
+    "nodemon": "^2.0.14"
+  }
+}
