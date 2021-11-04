@@ -29,6 +29,89 @@ bot.on('message', async message => {
             parse_mode: 'HTML',
             reply_markup: keyboard
         })
+    } else if (text == 'Расписание уроков') {
+        const dayskeyboard = {
+            resize_keyboard: true,
+            one_time_keyboard: true,
+            keyboard: [
+                [
+                    {
+                        text: `Понедельник`
+                    },
+                    {
+                        text: `Вторник`
+                    },
+                    {
+                        text: `Среда`
+                    },
+                ],
+                [
+                    {
+                        text: `Четверг`
+                    },
+                    {
+                        text: `Пятница`
+                    },
+                    {
+                        text: `Суббота`
+                    },
+                ],
+                [
+                    {
+                        text: `Главное`
+                    }
+                ]
+            ]
+        }
+        bot.sendMessage(chatId, `Выберите день недели`, {
+            parse_mode: 'HTML',
+            reply_markup: dayskeyboard
+        })
+
+    } else if (text == `Понедельник`) {
+        bot.sendMessage(chatId, `Понедельник: \n\n1. Англ.яз \n2. История \n3. Биология \n4. Алгебра \n5. География \n6. Русский.яз`, {
+            parse_mode: 'HTML'
+        })
+    } else if (text == `Вторник`) {
+        bot.sendMessage(chatId, `Вторник: \n\n1. Химия \n2. История \n3. Гос.право \n4. Геометрия \n5. Литература \n6. Физкультура`, {
+            parse_mode: 'HTML'
+        })
+    } else if (text == `Среда`) {
+        bot.sendMessage(chatId, `Среда: \n\n1. Англ.яз \n2. Алгебра \n3. Техналогия \n4. Узбекский.яз \n5. География \n6. Русский.яз`, {
+            parse_mode: 'HTML'
+        })
+    } else if (text == `Четверг`) {
+        bot.sendMessage(chatId, `Четверг: \n\n1. Физкультура \n2. История \n3. Биология \n4. Узбекский.яз \n5. Информатика \n6. Русский.яз`, {
+            parse_mode: 'HTML'
+        })
+    } else if (text == `Пятница`) {
+        bot.sendMessage(chatId, `Пятница: \n\n1. Час.дух. \n2. Черчение \n3. Воспитание \n4. Алгебра \n5. Физика \n6. Химия \n7. Англ.яз`, {
+            parse_mode: 'HTML'
+        })
+    } else if (text == `Суббота`) {
+        bot.sendMessage(chatId, `Суббота: \n\n1. Эканомика \n2. Физкультура \n3. Узбекский.яз \n4. Алгебра`, {
+            parse_mode: 'HTML'
+        })
+    } else if (text == `Главное`) {
+        const keyboard = {
+            resize_keyboard: true,
+            one_time_keyboard: true,
+            keyboard: [
+                [
+                    {
+                        text: `Расписание уроков`
+                    },
+                    {
+                        text: `Расписание звонков`
+                    }
+                ]
+            ]
+        }
+
+        bot.sendMessage(chatId, `Вы вышли на главное меню. Что вы хотите узнать?`, {
+            parse_mode: 'HTML',
+            reply_markup: keyboard
+        })
     }
 
 })
