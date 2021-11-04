@@ -13,39 +13,21 @@ bot.on('message', async message => {
     const name = message.from.first_name
     const text = message.text
     if (text == '/start' || text == 'start' || text == 'начать') {
-        const keyboard = {
-            resize_keyboard: true,
-            one_time_keyboard: true,
-            keyboard: [
-                [
-                    {
-                        text: `8 "А" класс`
-                    }
-                ]
-            ]
-        }
         bot.sendMessage(chatId, `Здравствуйте <b>${name}</b>. Что вы хотите узнать?`, {
             parse_mode: 'HTML',
-            reply_markup: keyboard
+            reply_markup: {
+                inline_keyboard: [
+                    [
+                        {
+                            text: `8 "А" класс`,
+                            callback_data: `8 "А" класс`
+                        }
+                    ]
+                ]
+            }
         })
     } else if (text == '8 "А" класс') {
-        const keyboard = {
-            resize_keyboard: true,
-            one_time_keyboard: true,
-            keyboard: [
-                [
-                    {
-                        text: `Расписание уроков`
-                    },
-                    {
-                        text: `Расписание звонков`
-                    },
-                    {
-                        text: `На старт`
-                    }
-                ]
-            ]
-        }
+
         bot.sendMessage(chatId, `Здесь вы можете найти расписание уроков и звонков! Выберите ниже 👇`, {
             parse_mode: 'HTML',
             reply_markup: {
@@ -88,24 +70,6 @@ bot.on('message', async message => {
             reply_markup: keyboard
         })
     } else if (text == `Главное`) {
-        const keyboard = {
-            resize_keyboard: true,
-            one_time_keyboard: true,
-            keyboard: [
-                [
-                    {
-                        text: `Расписание уроков`
-                    },
-                    {
-                        text: `Расписание звонков`
-                    },
-                    {
-                        text: `На старт`
-                    }
-                ]
-            ]
-        }
-
         bot.sendMessage(chatId, `Вы вышли на главное меню. Что вы хотите узнать?`, {
             parse_mode: 'HTML',
             reply_markup: {
@@ -135,40 +99,6 @@ bot.on('message', async message => {
         const dayskeyboard = {
             resize_keyboard: true,
             one_time_keyboard: true,
-            // keyboard: [
-            //     [
-            //         {
-            //             text: `1-ый урок`
-            //         },
-            //         {
-            //             text: `2-ой урок`
-            //         },
-            //         {
-            //             text: `3-ий урок`
-            //         },
-            //     ],
-            //     [
-            //         {
-            //             text: `4-ый урок`
-            //         },
-            //         {
-            //             text: `5-ый урок`
-            //         },
-            //         {
-            //             text: `6-ой урок`
-            //         },
-            //     ],
-            //     [
-            //         {
-            //             text: `Расписание звонков пятница`
-            //         },
-            //     ],
-            //     [
-            //         {
-            //             text: `Главное`
-            //         }
-            //     ]
-            // ]
             reply_markup: {
                 inline_keyboard: [
                     [
@@ -499,6 +429,50 @@ bot.on('callback_query', async query => {
         case 'Главное':
             bot.deleteMessage(chat.id, message_id)
             bot.sendMessage(chat.id, `Вы вышли на главное меню. Что вы хотите узнать?`, {
+                parse_mode: 'HTML',
+                reply_markup: {
+                    inline_keyboard: [
+                        [
+                            {
+                                text: 'Расписание уроков',
+                                callback_data: "Расписание уроков"
+                            }
+                        ],
+                        [
+                            {
+                                text: 'Расписание звонков',
+                                callback_data: "Расписание звонков"
+                            }
+                        ],
+                        [
+                            {
+                                text: 'На старт',
+                                callback_data: "На старт"
+                            }
+                        ]
+                    ]
+                }
+            })
+            break
+        case 'На старт':
+            bot.deleteMessage(chat.id, message_id)
+            bot.sendMessage(chat.id, `Что вы хотите узнать?`, {
+                parse_mode: 'HTML',
+                reply_markup: {
+                    inline_keyboard: [
+                        [
+                            {
+                                text: `8 "А" класс`,
+                                callback_data: `8 "А" класс`
+                            }
+                        ]
+                    ]
+                }
+            })
+            break
+        case '8 "А" класс':
+            bot.deleteMessage(chat.id, message_id)
+            bot.sendMessage(chat.id, `Здесь вы можете найти расписание уроков и звонков! Выберите ниже 👇`, {
                 parse_mode: 'HTML',
                 reply_markup: {
                     inline_keyboard: [
