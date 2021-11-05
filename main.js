@@ -673,6 +673,7 @@ bot.on('callback_query', async query => {
             })
             break
         case "3-ий урок пятница":
+        bot.deleteMessage(chat.id, message_id),
             await bot.sendPhoto(
                 chat.id,
                 'images/3-s.jpg', {
