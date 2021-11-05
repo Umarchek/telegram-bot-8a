@@ -616,24 +616,26 @@ bot.on('callback_query', async query => {
                 })
             break
         case '6-ой урок':
-            await bot.sendPhoto(
-                message.chat.id,
-                'images/6.jpg', {
-                caption: `6-ой урок\n\nНачало: 12:20 \nКонец: 13:05`,
-                parse_mode: 'HTML',
-                reply_markup: {
-                    inline_keyboard: [
-                        [
-                            {
-                                text: `Главное`,
-                                callback_data: "Главное"
-                            }
-                        ],
-                    ]
-                }
-            })
+            bot.deleteMessage(chat.id, message_id),
+                await bot.sendPhoto(
+                    message.chat.id,
+                    'images/6.jpg', {
+                    caption: `6-ой урок\n\nНачало: 12:20 \nКонец: 13:05`,
+                    parse_mode: 'HTML',
+                    reply_markup: {
+                        inline_keyboard: [
+                            [
+                                {
+                                    text: `Главное`,
+                                    callback_data: "Главное"
+                                }
+                            ],
+                        ]
+                    }
+                })
             break
         case '1-ый урок пятница':
+        bot.deleteMessage(chat.id, message_id),
             await bot.sendPhoto(
                 chat.id,
                 'images/1-s.jpg', {
