@@ -542,7 +542,7 @@ bot.on('callback_query', async query => {
         case '2-ой урок':
             bot.deleteMessage(chat.id, message_id),
                 await bot.sendPhoto(
-                    message.chat.id,
+                    chat.id,
                     'images/2.jpg', {
                     caption: `2-ый урок\n\nНачало: 08:50 \nКонец: 09:35`,
                     parse_mode: 'HTML',
