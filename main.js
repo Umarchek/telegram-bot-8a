@@ -599,7 +599,7 @@ bot.on('callback_query', async query => {
         case '5-ый урок':
             bot.deleteMessage(chat.id, message_id),
                 await bot.sendPhoto(
-                    message.chat.id,
+                    chat.id,
                     'images/5.jpg', {
                     caption: `5-ый урок\n\nНачало: 11:30 \nКонец: 12:15`,
                     parse_mode: 'HTML',
