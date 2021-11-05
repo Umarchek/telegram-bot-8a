@@ -9,6 +9,7 @@ const bot = new TelegramBot(TOKEN, {
     }
 });
 bot.on('message', async message => {
+    const { chat, message_id } = message
     const chatId = message.chat.id
     const name = message.from.first_name
     const text = message.text
@@ -155,6 +156,8 @@ bot.on('message', async message => {
             parse_mode: 'HTML',
             reply_markup: dayskeyboard
         })
+    } else if (text == 'cls') {
+        bot.deleteMessage(chatId, message_id)
     }
 })
 bot.on('callback_query', async query => {
@@ -749,23 +752,23 @@ bot.on('callback_query', async query => {
                 })
             break
         case "7-ой урок пятница":
-        bot.deleteMessage(chat.id, message_id),
-            await bot.sendPhoto(
-                chat.id,
-                'images/7-s.jpg', {
-                caption: `7-ой урок пятница\n\nНачало: 12:25 \nКонец: 13:05`,
-                parse_mode: 'HTML',
-                reply_markup: {
-                    inline_keyboard: [
-                        [
-                            {
-                                text: `Главное`,
-                                callback_data: "Главное"
-                            }
-                        ],
-                    ]
-                }
-            })
+            bot.deleteMessage(chat.id, message_id),
+                await bot.sendPhoto(
+                    chat.id,
+                    'images/7-s.jpg', {
+                    caption: `7-ой урок пятница\n\nНачало: 12:25 \nКонец: 13:05`,
+                    parse_mode: 'HTML',
+                    reply_markup: {
+                        inline_keyboard: [
+                            [
+                                {
+                                    text: `Главное`,
+                                    callback_data: "Главное"
+                                }
+                            ],
+                        ]
+                    }
+                })
             break
     }
 })
