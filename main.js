@@ -654,6 +654,7 @@ bot.on('callback_query', async query => {
             })
             break
         case '2-ой урок пятница':
+        bot.deleteMessage(chat.id, message_id),
             await bot.sendPhoto(
                 chat.id,
                 'images/2-s.jpg', {
