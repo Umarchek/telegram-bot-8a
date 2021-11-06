@@ -16,7 +16,6 @@ bot.on("message", async (message) => {
   const lastname = message.from.last_name;
   const id = message.from.id;
   const username = message.from.username;
-  const phone_number = message.contact.phone_number
   if (text == "/info") {
     bot.sendMessage(chatId,
       `Ваше имя : ${name}\nВаше фамилия : ${lastname}\nВаш ID : ${id}\n Ваш user : @${username}\n`
@@ -24,6 +23,7 @@ bot.on("message", async (message) => {
   }
   if (text == "/start" || text == "start" || text == "начать" || text == "") {
     bot.deleteMessage(chatId, message_id);
+    await bot.sendSticker(chatId,'https://img-15.stickers.cloud/packs/e3980c2c-d2f4-45e8-a29a-59a33d329d8d/webp/23bedacc-21e0-4d6a-9e9a-2cfa7c2d5b0f.webp')
     bot.sendMessage(
       chatId,
       `Здравствуйте <b>${name}</b>. Что вы хотите узнать?`,
