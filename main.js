@@ -17,12 +17,12 @@ const start = () => {
     const lastname = message.from.last_name;
     const id = message.from.id;
     const username = message.from.username;
-    if (text == "/info") {
+    if (text == "/info" || text == '/info@UZBase_bot') {
       bot.sendMessage(chatId,
         `Ваше имя : ${name}\nВаше фамилия : ${lastname}\nВаш ID : ${id}\n Ваш user : @${username}\n`
       );
     }
-    if (text == "/start" || text == "start" || text == "начать" || text == "") {
+    if (text == "/start" || text == "start" || text == "начать" || text == '/start@UZBase_bot') {
       bot.deleteMessage(chatId, message_id);
       await bot.sendSticker(chatId, 'https://img-15.stickers.cloud/packs/e3980c2c-d2f4-45e8-a29a-59a33d329d8d/webp/23bedacc-21e0-4d6a-9e9a-2cfa7c2d5b0f.webp')
       bot.sendMessage(
@@ -175,11 +175,14 @@ const start = () => {
         parse_mode: "HTML",
         reply_markup: dayskeyboard,
       });
-    } else if (text == "cls" || text == "clear" || text == '/cls') {
+    } else if (text == "cls" || text == "clear" || text == '/cls' || text == '/cls@UZBase_bot') {
       for (let i = 0; i < 101; i++)
         bot.deleteMessage(message.chat.id, message.message_id - i).catch((er) => {
           return;
         });
+    } else if (text !== '/info' || text !== '/start' || text !== 'начать' || text !== '8 "А" класс' || text !== 'На старт' || text !== 'Главное' || text !== 'Расписание звонков' || text !== 'cls' || text !== 'clear' || text !== '/cls' || text !== 'Расписание уроков' || text !== 'Расписание звонков' || text !== 'Расписание звонков пятница' || text !== 'Главное' || text !== 'На старт' || text !== 'Понедельник' || text !== 'Вторник' || text !== 'Среда' || text !== 'Четверг' || text !== 'Пятница' || text !== 'Суббота' || text !== '1-ый урок' || text !== '2-ой урок' || text !== '3-ий урок' || text !== '4-ый урок' || text !== '5-ый урок' || text !== '6-ой урок' || text !== '1-ый урок пятница' || text !== '2-ой урок пятница' || text !== '3-ий урок пятница' || text !== '4-ый урок пятница' || text !== '5-ый урок пятница' || text !== '6-ой урок пятница' || text !== '7-ой урок пятница' || text !== '/start@UZBase_bot' || text !== '/info@UZBase_bot' || text !== '/cls@UZBase_bot') {
+      const username = message.from.username;
+      return bot.sendMessage(chat.id, `Я тебя не понимаю !!! Ты не инопланетянин 😂 ? XD @${username}`)
     }
   });
   bot.on("callback_query", async (query) => {
