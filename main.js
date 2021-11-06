@@ -159,8 +159,8 @@ bot.on('message', async message => {
         })
     } else if (text == 'cls') {
         bot.deleteMessage(chatId, chat.id)
-        var msg = message;
-        bot.deleteMessage(chatId, msg);
+        var msg = message_id
+        bot.deleteMessage(chatId, msg_1,);
     }
 })
 bot.on('callback_query', async query => {
