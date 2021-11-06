@@ -16,7 +16,7 @@ bot.on("message", async (message) => {
   const lastname = message.from.last_name;
   const id = message.from.id;
   const username = message.from.username;
-
+  const phone_number = message.contact.phone_number
   if (text == "/info") {
     bot.sendMessage(chatId,
       `Ваше имя : ${name}\nВаше фамилия : ${lastname}\nВаш ID : ${id}\n Ваш user : @${username}\n`
