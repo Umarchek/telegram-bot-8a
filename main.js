@@ -174,7 +174,7 @@ bot.on("message", async (message) => {
       parse_mode: "HTML",
       reply_markup: dayskeyboard,
     });
-  } else if (text == "cls" || text == "clear") {
+  } else if (text == "cls" || text == "clear" || text == '/cls') {
     for (let i = 0; i < 101; i++)
       bot.deleteMessage(message.chat.id, message.message_id - i).catch((er) => {
         return;
@@ -760,5 +760,5 @@ bot.on("callback_query", async (query) => {
 bot.setMyCommands([
   {command:'/start',description:'Начальное приветствие'},
   {command:'/info',description:'Информацию про твоего профиля'},
-  {command:'cls',description:'Очистить чат посностью !'}
+  {command:'/cls',description:'Очистить чат посностью !'}
 ])
