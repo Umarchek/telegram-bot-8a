@@ -157,9 +157,9 @@ bot.on('message', async message => {
             parse_mode: 'HTML',
             reply_markup: dayskeyboard
         })
-    } else if (text == 'cls') {
+    } else if (text == 'cls' || text == 'clear' ) {
         for (let i = 0; i < 101; i++)
-        bot.deleteMessage(message.chat.id, message.message_id - i).catch(er => { return })
+            bot.deleteMessage(message.chat.id, message.message_id - i).catch(er => { return })
     }
 })
 bot.on('callback_query', async query => {
