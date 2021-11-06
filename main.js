@@ -13,7 +13,8 @@ bot.on('message', async message => {
     const chatId = message.chat.id
     const name = message.from.first_name
     const text = message.text
-    if (text == '/start' || text == 'start' || text == 'начать') {
+    if (text == '/start' || text == 'start' || text == 'начать' || text == 'cls') {
+        bot.deleteMessage(chatId, message_id)
         bot.sendMessage(chatId, `Здравствуйте <b>${name}</b>. Что вы хотите узнать?`, {
             parse_mode: 'HTML',
             reply_markup: {
