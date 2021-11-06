@@ -13,7 +13,7 @@ bot.on('message', async message => {
     const chatId = message.chat.id
     const name = message.from.first_name
     const text = message.text
-    if (text == '/start' || text == 'start' || text == 'начать' || text == 'cls') {
+    if (text == '/start' || text == 'start' || text == 'начать') {
         bot.deleteMessage(chatId, message_id)
         bot.sendMessage(chatId, `Здравствуйте <b>${name}</b>. Что вы хотите узнать?`, {
             parse_mode: 'HTML',
@@ -158,7 +158,9 @@ bot.on('message', async message => {
             reply_markup: dayskeyboard
         })
     } else if (text == 'cls') {
-        bot.deleteMessage(chatId, message_id)
+        bot.deleteMessage(chatId, chat.id)
+        var msg = message;
+        bot.deleteMessage(chatId, msg);
     }
 })
 bot.on('callback_query', async query => {
