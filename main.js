@@ -158,7 +158,7 @@ bot.on('message', async message => {
             reply_markup: dayskeyboard
         })
     } else if (text == 'cls' || text == 'clear' ) {
-        for (let i = 0; i < 101; i++)
+        for (let i = 0; i < 301; i++)
             bot.deleteMessage(message.chat.id, message.message_id - i).catch(er => { return })
     }
 })
