@@ -23,7 +23,7 @@ bot.on("message", async (message) => {
   }
   if (text == "/start" || text == "start" || text == "начать" || text == "") {
     bot.deleteMessage(chatId, message_id);
-    await bot.sendSticker(chatId,'https://img-15.stickers.cloud/packs/e3980c2c-d2f4-45e8-a29a-59a33d329d8d/webp/23bedacc-21e0-4d6a-9e9a-2cfa7c2d5b0f.webp')
+    await bot.sendSticker(chatId, 'https://img-15.stickers.cloud/packs/e3980c2c-d2f4-45e8-a29a-59a33d329d8d/webp/23bedacc-21e0-4d6a-9e9a-2cfa7c2d5b0f.webp')
     bot.sendMessage(
       chatId,
       `Здравствуйте <b>${name}</b>. Что вы хотите узнать?`,
@@ -757,3 +757,8 @@ bot.on("callback_query", async (query) => {
       break;
   }
 });
+bot.setMyCommands([
+  {command:'/start',description:'Начальное приветствие'},
+  {command:'/info',description:'Информацию про твоего профиля'},
+  {command:'cls',description:'Очистить чат посностью !'}
+])
