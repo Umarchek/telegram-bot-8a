@@ -262,12 +262,6 @@ bot.on('callback_query', async query => {
                         ],
                         [
                             {
-                                text: `7-ой урок`,
-                                callback_data: "7-ой урок"
-                            }
-                        ],
-                        [
-                            {
                                 text: `Расписание звонков пятница`,
                                 callback_data: "Расписание звонков пятница"
                             }
