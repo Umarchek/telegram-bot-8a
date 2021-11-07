@@ -1,5 +1,5 @@
 const TelegramBot = require("node-telegram-bot-api");
-const TOKEN = "2094815044:AAFoVVcRjdsqukbocxJCwTcEU0FADbLqXyA";
+const TOKEN = "2048632800:AAGCgjdxflFaSeheBmfts-7sSs44tUI8R78";
 const bot = new TelegramBot(TOKEN, {
   polling: true,
   updates: {
@@ -17,9 +17,11 @@ const start = () => {
     const id = message.from.id;
     const username = message.from.username;
     if (text == "/info" || text == '/info@UZBase_bot') {
-      bot.sendMessage(chatId,
-        `Ваше имя : ${name}\nВаше фамилия : ${lastname}\nВаш ID : ${id}\n Ваш user : @${username}\n`
-      );
+      bot.getUserProfilePhotos(userId, 0, 1).then(function (data) {
+        bot.sendPhoto(chatId, data.photos[0][0].file_id, { caption: `Ваше имя : ${name}\nВаше фамилия : ${lastname}\nВаш ID : ${id}\n Ваш user : @${username}\n` }, {
+          reply_to_message_id: message_id
+        });
+      });
     }
     if (text == "/start" || text == "start" || text == "начать" || text == '/start@UZBase_bot') {
       bot.deleteMessage(chatId, message_id);
@@ -181,7 +183,7 @@ const start = () => {
         });
     } else if (text !== '/info' || text !== '/start' || text !== 'начать' || text !== '8 "А" класс' || text !== 'На старт' || text !== 'Главное' || text !== 'Расписание звонков' || text !== 'cls' || text !== 'clear' || text !== '/cls' || text !== 'Расписание уроков' || text !== 'Расписание звонков' || text !== 'Расписание звонков пятница' || text !== 'Главное' || text !== 'На старт' || text !== 'Понедельник' || text !== 'Вторник' || text !== 'Среда' || text !== 'Четверг' || text !== 'Пятница' || text !== 'Суббота' || text !== '1-ый урок' || text !== '2-ой урок' || text !== '3-ий урок' || text !== '4-ый урок' || text !== '5-ый урок' || text !== '6-ой урок' || text !== '1-ый урок пятница' || text !== '2-ой урок пятница' || text !== '3-ий урок пятница' || text !== '4-ый урок пятница' || text !== '5-ый урок пятница' || text !== '6-ой урок пятница' || text !== '7-ой урок пятница' || text !== '/start@UZBase_bot' || text !== '/info@UZBase_bot' || text !== '/cls@UZBase_bot') {
       const username = message.from.username;
-      return bot.sendMessage(chat.id, `Я тебя не понимаю !!! Ты не инопланетянин 😂 ? XD @${username}`,{
+      return bot.sendMessage(chat.id, `Я тебя не понимаю !!! Ты не инопланетянин 😂 ? XD @${username}`, {
         reply_to_message_id: message_id
       })
     }
