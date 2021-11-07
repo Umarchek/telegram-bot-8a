@@ -16,7 +16,7 @@ const start = () => {
     const lastname = message.from.last_name;
     const id = message.from.id;
     const username = message.from.username;
-    if (text == "/info" || text == "/info@UZBase_bot") {
+    if (text == "/info" || text == "/info@Your_diary_Robot") {
       bot.getUserProfilePhotos(id, 0, 1).then(function (data) {
         bot.sendPhoto(
           chatId,
@@ -33,7 +33,7 @@ const start = () => {
       text == "/start" ||
       text == "start" ||
       text == "начать" ||
-      text == "/start@UZBase_bot"
+      text == "/start@Your_diary_Robot"
     ) {
       bot.deleteMessage(chatId, message_id);
       await bot.sendSticker(
@@ -198,7 +198,7 @@ const start = () => {
       text == "cls" ||
       text == "clear" ||
       text == "/cls" ||
-      text == "/cls@UZBase_bot"
+      text == "/cls@Your_diary_Robot"
     ) {
       for (let i = 0; i < 301; i++)
         bot
@@ -206,7 +206,7 @@ const start = () => {
           .catch((er) => {
             return;
           });
-    } else if (text == "/admins@UZBase_bot" || text == "/admins") {
+    } else if (text == "/admins@Your_diary_Robot" || text == "/admins") {
       bot.getChatAdministrators(chatId).then((data) => {
         const chatId = message.chat.id;
         const { chat, message_id } = message;
