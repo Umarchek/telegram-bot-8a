@@ -200,7 +200,7 @@ const start = () => {
       text == "/cls" ||
       text == "/cls@UZBase_bot"
     ) {
-      for (let i = 0; i < 101; i++)
+      for (let i = 0; i < 301; i++)
         bot
           .deleteMessage(message.chat.id, message.message_id - i)
           .catch((er) => {
@@ -210,30 +210,29 @@ const start = () => {
       bot.getChatAdministrators(chatId).then((data) => {
         const chatId = message.chat.id;
         const { chat, message_id } = message;
-        console.log(data);
+        // console.log(data);
         // bot.sendMessage(
         //   chatId,
         //   `Имя : ${data[4].user.first_name}\nId пользователя : ${data[4].user.id}\nСтатус : ${data[4].status}\nБот : ${data[4].user.is_bot}\nВключёл ли режим анонимность : ${data[4].is_anonymous}`
         // );
-        for (let i = 0; i < 4; i++) {
-          const admin_name = data[i].user.first_name;
-          const admin_id = data[i].user.id;
-          const admin_status = data[i].status;
-          const admin_is_bot = data[i].user.is_bot;
-          const admin_is_anonymous = data[i].is_anonymous;
+        for (let a = 0; a < 4; a++) {
+          const admin_name = data[a].user.first_name;
+          const admin_id = data[a].user.id;
+          const admin_status = data[a].status;
+          const admin_is_bot = data[a].user.is_bot;
+          bot.getUserProfilePhotos(admin_id, 0, 0).then(function (photos) {
+            bot.sendPhoto(
+              chatId,
+              photos.photos[0][0].file_id,
+              {
+                caption: `Имя : ${admin_name}\nId пользователя : ${admin_id}\nСтатус : ${admin_status}\nБот : ${admin_is_bot}\n`,
+              },
+              {
+                reply_to_message_id: message_id,
+              }
+            );
+          });
         }
-        bot.getUserProfilePhotos(id, 0, 1).then(function (data) {
-          bot.sendPhoto(
-            chatId,
-            data.photos[0][0].file_id,
-            {
-              caption: `Имя : ${admin_name}\nId пользователя : ${admin_id}\nСтатус : ${admin_status}\nБот : ${admin_is_bot}\nВключёл ли режим анонимность : ${admin_is_anonymous}`,
-            },
-            {
-              reply_to_message_id: message_id,
-            }
-          );
-        });
       });
     }
   });
