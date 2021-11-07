@@ -207,7 +207,16 @@ const start = () => {
             return;
           });
     } else if (text == "/admins@UZBase_bot" || text == "/admins") {
-      bot.sendMessage(chatId,'work')
+      bot.getChatAdministrators(chatId).then((data) => {
+        // console.log(data);
+        const chatId = message.chat.id;
+        for (let i = 0; i++; ) {
+          bot.sendMessage(
+            chatId,
+            `Статус : ${data[i].status}\n User : @${data[i].user.username} `
+          );
+        }
+      });
     }
   });
   bot.on("callback_query", async (query) => {
