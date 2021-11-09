@@ -489,7 +489,7 @@ const start = () => {
       case "Понедельник":
         bot.deleteMessage(chat.id, message_id);
         await bot.sendPhoto(chat.id, "images/Monday.jpg", {
-          caption: `Понедельник: \n\n1. Англ.яз \n2. История \n3. Биология \n4. Алгебра \n5. География \n6. Русский.яз`,
+          caption: `Понедельник: \n\n1. Англ.яз \n2. История \n3. Биология \n4. Алгебра \n5. География \n6. Литература - Русский.яз`,
           parse_mode: "HTML",
           reply_markup: {
             inline_keyboard: [
@@ -506,7 +506,7 @@ const start = () => {
       case "Вторник":
         bot.deleteMessage(chat.id, message_id);
         await bot.sendPhoto(chat.id, "images/Tuesday.jpg", {
-          caption: `Вторник: \n\n1. Химия \n2. История \n3. Гос.право \n4. Геометрия \n5. Литература \n6. Физкультура`,
+          caption: `Вторник: \n\n1. Химия \n2. История \n3. Гос.право \n4. Геометрия \n5. Литература - Русский.яз \n6. Физкультура`,
           parse_mode: "HTML",
           reply_markup: {
             inline_keyboard: [
@@ -523,7 +523,7 @@ const start = () => {
       case "Среда":
         bot.deleteMessage(chat.id, message_id);
         await bot.sendPhoto(chat.id, "images/Wednesday.jpg", {
-          caption: `Среда: \n\n1. Англ.яз \n2. Алгебра \n3. Техналогия \n4. Узбекский.яз \n5. География \n6. Русский.яз`,
+          caption: `Среда: \n\n1. Англ.яз \n2. Алгебра \n3. Техналогия \n4. Узбекский.яз \n5. География \n6. Литература - Русский.яз`,
           parse_mode: "HTML",
           reply_markup: {
             inline_keyboard: [
@@ -540,7 +540,7 @@ const start = () => {
       case "Четверг":
         bot.deleteMessage(chat.id, message_id),
           await bot.sendPhoto(chat.id, "images/Thursday.jpg", {
-            caption: `Четверг: \n\n1. Физкультура \n2. История \n3. Биология \n4. Узбекский.яз \n5. Информатика \n6. Русский.яз`,
+            caption: `Четверг: \n\n1. Физкультура \n2. История \n3. Биология \n4. Узбекский.яз \n5. Информатика \n6. Литература - Русский.яз`,
             parse_mode: "HTML",
             reply_markup: {
               inline_keyboard: [
@@ -814,7 +814,7 @@ const start = () => {
   bot.setMyCommands([
     { command: "/start", description: "Начальное приветствие" },
     { command: "/info", description: "Информацию про твоего профиля" },
-    { command: "/admins", description: "Админы данного чата !" },
+    { command: "/admins", description: "Админы данной группы ! (только в группах)" },
     { command: "/cls", description: "Очистить чат посностью !" },
   ]);
 };
