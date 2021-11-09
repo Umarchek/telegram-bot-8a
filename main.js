@@ -194,8 +194,7 @@ const start = () => {
         parse_mode: "HTML",
         reply_markup: dayskeyboard,
       });
-    } else if (
-      text == "cls" ||
+    } else if (text == "cls" ||
       text == "clear" ||
       text == "/cls" ||
       text == "/cls@Your_diary_Robot"
